@@ -1,0 +1,14 @@
+# Ambientes virtuais
+.venv/
+env/
+
+# Caches
+__pycache__/
+*.py[cod]
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Sistema
+.DS_Store
+*.log
