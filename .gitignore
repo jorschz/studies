@@ -12,3 +12,8 @@ __pycache__/
 # Sistema
 .DS_Store
 *.log
+
+#
+askAI.ipynb
+glossary.ipynb
+summary.md
