@@ -1,6 +1,7 @@
 # Ambientes virtuais
 .venv/
 env/
+venv/
 
 # Caches
 __pycache__/
@@ -13,9 +14,7 @@ __pycache__/
 .DS_Store
 *.log
 
-#
-askAI.ipynb
-glossary.ipynb
-summary.md
-cg.md
-faculdade
+# Pastas/arquivos específicos
+faculdade/   
+books/      
+sketch/      
