@@ -11,8 +11,12 @@ Conceitos:
 *Generalization* = Adding a **parameter** to a function
 *Refactoring* = Improving the code without changing tis behavior
 """
-# Substituição do input para testes automáticos
-def input(prompt):
+
+# Variaves globais: Apenas imutaveis
+pi = 3.14
+
+# Substituição do input para testes automáticos. Não use apenas input() para não redefinir a função built-in
+def simulated_input(prompt):
     #print(prompt, end='')  # Mostra o prompt
     # Respostas fixas para teste
     reply = {
@@ -22,11 +26,8 @@ def input(prompt):
     #print(reply)  # Mostra a resposta simulada
     return reply.get(prompt, "0")  # Retorna como se tivesse sido digitado (Para um dicionario é necesario ter o .get)
 
-# Variaves globais
-a, b, c, d, e, f = -30, 12, 43, 8, 6, 7 
-
 # Função sem parameter
-def lista_operacoes():
+def lista_operacoes(a, b, c, d, e, f):
     """Cria e retorna uma lista de tuplas (descrição, resultado).""" #docstring
     lista = [ #Lista de tuplas
         (f"{a} + {b}", abs(a + b)),          # Soma e abs
@@ -39,7 +40,7 @@ def lista_operacoes():
         
         (f"({a} * {e} / {c})", round(abs((a*e)/c), 2)), # abs e round com duas casas
         
-        ("√π", math.sqrt(math.pi)), # Usando math
+        (f"√{pi}", math.sqrt(pi)), # Usando math
     ]
     return lista # Retorna a lista criada
 
@@ -53,37 +54,60 @@ def imprimir_operacoes(operacoes):
 def clock_arithmetic(start, duration):
     """Calcula a hora de término de um evento usando aritmética modular."""
     end = (start + duration) % 12 # Modulus operator
-    print(f"Se o evento começa as {start} e tem a duração de {duration} então ele acaba as {end}...")
     return end
 
+#Boolean com chained e Nested conditionals
+def hora_chegada(hora):
+    if hora < 4:
+        return "Eu não vou estar atrasado"
+    elif 4  <= hora <= 6:
+        if hora < 5:
+            return "Eu vou precisar correr"
+        else:
+            return "Eu vou precisar pegar um uber"
+    else:
+        return "Melhor nem ir"
+
 #Função recursiva
-def recursive():
-    pass
+def fibonacci(n):
+    """Calcula o n-ésimo número da sequência de Fibonacci."""
+    if n <= 1:
+        return n
+    else:
+        return fibonacci(n - 1) + fibonacci(n - 2)
 
 # Função de entrada
 def main():
-    
+
     print("Lista de calculos" + " para estudo") # String com +concatenação
-    
     ##function call de um (function())
-    imprimir_operacoes(lista_operacoes())
+    operacoes = lista_operacoes(-30, 12, 43, 8, 6, 7 )
+    imprimir_operacoes(operacoes)
+    
+    print(f"fibonacci: {fibonacci(7)}")
     
     fim = "fim " * 5 # String com *concatenação
     print(fim, f"\nAcima tem: {len(fim)} caracteres e o tipo é {type(fim)}") # Len e type function chamando uma variavel
 
-    #function call com (parameters) e input de usuario
-    start, duration = int(input("Hora de inicio (0-11): ")), int(input("Duração em horas: ")) # Convertendo para int
+    #function call com (parameters) e input de usuario~. Convertendo para int
+    start = int(simulated_input("Hora de inicio (0-11): "))
+    duration = int(simulated_input("Duração em horas: "))        
     end_evento = clock_arithmetic(start, duration)
     
-    #Boolean com chained e Nested conditionals
-    if end_evento < 4:
-        print("Eu não vou estar atrasado")
-    elif 4 <= end_evento <= 6: #chained
-        if end_evento < 5: #nested
-            print("Eu vou precisar correr")
-        else:
-            print("Eu vou precisar pegar um uber")
-    else:
-        print("Melhor nem ir")
+    print(f"Se o evento começa às {start} e tem duração de {duration} horas, então acaba às {end_evento}...")
+    mensagem = hora_chegada(end_evento)
+    print(mensagem)
+    
+    
 
-main()
+if __name__ == "__main__":
+    main()
+
+
+"""
+Dicas de refatoração:
+- Evitar variaveis globais mutaveis
+- Separar lógica de apresentação e facil debugg
+- Usar um dicionario de mensagens (encapsulação de regras) para condicionais
+- Deixar o `main()` limpo
+"""
