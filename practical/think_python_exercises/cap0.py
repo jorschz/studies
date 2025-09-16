@@ -68,7 +68,7 @@ def hora_chegada(hora):
     else:
         return "Melhor nem ir"
 
-#Função recursiva
+#Função recursiva com return <- ESTUDAR MAIS.
 def fibonacci(n):
     """Calcula o n-ésimo número da sequência de Fibonacci."""
     if n <= 1:
