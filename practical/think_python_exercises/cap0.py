@@ -1,6 +1,8 @@
 # Import statements
 import math
 
+from doctest import run_docstring_examples
+
 """
 Conceitos:
 *Expression* = A collection of **operators** and numbers and has a **value**
@@ -75,21 +77,55 @@ def fibonacci(n):
         return n
     else:
         return fibonacci(n - 1) + fibonacci(n - 2)
+    
+#Função recursiva 2 (retornou a função com diferentes parametros)
+def gcd(a, b):
+    if b == 0:
+        return a
+    else:
+        r = a%b
+        return gcd(b, r)
+
+#Counter function
+def counter():
+    pass
+
+#Use of methodsm, a linear search.
+def uses_any(word, letters):
+    """Checks if a word uses any of a list of letters.
+
+    >>> uses_any('banana', 'aeiou')
+    True
+    >>> uses_any('apple', 'xyz')
+    False
+    """
+    for letter in word.lower():
+        if letter in letters.lower():
+            return True
+    return False # Need to be outside of the loop to not just search the first letter
+
+#Test
+def run_doctests(func):
+    run_docstring_examples(func, globals(), name=func.__name__)
 
 # Função de entrada
 def main():
 
+    #Calculadora(?)
     print("Lista de calculos" + " para estudo") # String com +concatenação
     ##function call de um (function())
     operacoes = lista_operacoes(-30, 12, 43, 8, 6, 7 )
     imprimir_operacoes(operacoes)
     
-    print(f"fibonacci: {fibonacci(7)}")
-    
     fim = "fim " * 5 # String com *concatenação
     print(fim, f"\nAcima tem: {len(fim)} caracteres e o tipo é {type(fim)}") # Len e type function chamando uma variavel
+    
+    #Call das Funções recursivas <- ESTUDAR MAIS
+    print(f"fibonacci: {fibonacci(7)}")
+    print(f"greatest common divisor of 13 and 17 is: {gcd(13,17)}")
+    print("A palavra celular tem a letra 'a'?", uses_any("celular", "a"))
 
-    #function call com (parameters) e input de usuario~. Convertendo para int
+    #function call com (parameters) e input de usuario. Convertendo para int
     start = int(simulated_input("Hora de inicio (0-11): "))
     duration = int(simulated_input("Duração em horas: "))        
     end_evento = clock_arithmetic(start, duration)
@@ -98,10 +134,9 @@ def main():
     mensagem = hora_chegada(end_evento)
     print(mensagem)
     
-    
-
 if __name__ == "__main__":
     main()
+    run_doctests(uses_any) #Test deveria estar em outro arquivo.
 
 
 """
