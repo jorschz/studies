@@ -1,34 +1,36 @@
-# Ambientes virtuais Python
-python/.venv/
-env/
-venv/
+#IDEs e Editores
+.vscode/
 
-# Caches Python
+#Python
+#Virtual environments
+.venv/
+venv/
+#Byte code cache
 __pycache__/
 *.py[cod]
+#Pastas
+python/materials/
 
-# Jupyter
-.ipynb_checkpoints/
+#Java
+#Dependencias
+*.jar
+#Aplication servers
+java/servers/
+#web Aplication (JSP)
+java/practical/jsp/WEB-INF/
+#Pastas
+java/materials/
 
-# Sistema
+#Sistema
 .DS_Store
+*.tmp
 *.log
 
-# Java - arquivos compilados
-*.class
-*.war
-*.ear
-*.jar
-
-# Java - servidores
-java/servers/
-
-# Pastas/arquivos específicos
-python/materials/
-java/materials/
+#Outros
 gitguide.md
 
-# IDEs
-.vscode/
-.idea/
-*.iml
+
+
+
+
+
