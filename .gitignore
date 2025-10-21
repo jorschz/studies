@@ -1,9 +1,9 @@
-# Ambientes virtuais
-.venv/
+# Ambientes virtuais Python
+python/.venv/
 env/
 venv/
 
-# Caches
+# Caches Python
 __pycache__/
 *.py[cod]
 
@@ -14,5 +14,21 @@ __pycache__/
 .DS_Store
 *.log
 
+# Java - arquivos compilados
+*.class
+*.war
+*.ear
+*.jar
+
+# Java - servidores
+java/servers/
+
 # Pastas/arquivos específicos
-materials/
+python/materials/
+java/materials/
+gitguide.md
+
+# IDEs
+.vscode/
+.idea/
+*.iml
