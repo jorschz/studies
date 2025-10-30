@@ -9,7 +9,7 @@ venv/
 __pycache__/
 *.py[cod]
 #Pastas
-python/materials/
+python/think_python/book
 
 #Java
 #Dependencias
@@ -17,9 +17,10 @@ python/materials/
 #Aplication servers
 java/servers/
 #web Aplication (JSP)
-java/practical/jsp/WEB-INF/
+java/jsp/WEB-INF
 #Pastas
-java/materials/
+java/jsp/materials
+
 
 #Sistema
 .DS_Store

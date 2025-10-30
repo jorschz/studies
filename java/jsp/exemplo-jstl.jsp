@@ -1,51 +1,74 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" %>
-<!-- 
-<%@ page import="java.io.*,java.util.*,java.sql*"%>
-<%@ page import="javax.servlet.http.*,javax.servlet.*"%> 
-<%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql"%>
--->
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
+<fmt:setLocale value="pt_BR" scope="session"/>
 
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="ISO-8859-1">
     <title>Utilizando o JSTL</title>
+    <style>
+    .cor{
+        color:red;
+    }
+    table {
+        border-collapse:collapse;
+        width: 100%;
+        margin: 20px 0;
+    }
+    th, td{
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+    }
+    th {
+        background-color: #f2f2f2;
+    }
+    tr:nth-child(even){
+        background-color:#f9f9f9;
+    }
+    </style>
+
 </head>
 <body>
-
-    <!-- <div>
+    
     <h1> Demonstracao - JSTL e Formatacao</h1>
     <p><strong>Data/Hora do Servidor:</strong> <%= new java.util.Date() %></p>
 
     <hr>
-        <h2>Demonstracao SQL</h2>
 
-    <sql:setDataSource var="snapshot" driver="com.mysql.jdbc.Driver"
-        url="jdbc:mysql://localhot:3306/agenda?useSSL=false&serverTimezone=UTC"
-        user="root" password="root"/>
-    <sql:query dataSource="${snapshot}" var="result">
-        SELECT * FROM agenda.contato
-    </sql:query>
+    <div>
+        <sql:setDataSource 
+	        var="snapshot" 
+            driver="com.mysql.cj.jdbc.Driver"
+            url="jdbc:mysql://localhost:3306/agenda?useSSL=false&serverTimezone=UTC"
+            user="jsp_user"
+            password="jsp123"
+        />  
 
-    <table border="1" width="100%">
-        <tr>
-            <th>Emp ID</th>
-            <th>Nome</th>
-            <th>E-mail</th>
-        </tr>
+        <sql:query dataSource="${snapshot}" var="result">
+            select id, nome, email FROM contato
+        </sql:query>
 
-        <c:forEach var="row" items="${result.rows}">
+        <table border="1" width="100%">
             <tr>
-                <td><c:out value="${row.Id}"/></td>
-                <td><c:out value="${row.nome}"/></td>
-                <td><c:out value="${row.email}"/></td>
+                <th>Id Empregado</th>
+                <th>Funcionario</th>
+                <th>E-mail</th>
             </tr>
-        </c:forEach>
-    </table>
-    </div> -->
+            <c:forEach var="registro" items="${result.rows}">
+                <tr>
+                    <td><c:out value="${registro.id}"/></td>
+                    <td><c:out value="${registro.nome}"/></td>
+                    <td><c:out value="${registro.email}"/></td>
+                </tr>
+            </c:forEach>
+        </table>
+        
+    </div>
 
     <hr>
 
@@ -56,9 +79,9 @@
         <c:set var="porc" value="0.10" />
         <c:set var="numeroGrande" value="1234567.8912"/>
         
-        <p><strong>Moeda local (BRL):</strong>
-            <fmt:formatNumber value="${balance}" type="currency" /></p>
-        
+        <p><strong>Moeda Brasileira</strong>
+            <fmt:formatNumber value="${balance}" type="currency"/></p>
+
         <p><strong>Porcentagem (10%):</strong>
             <fmt:formatNumber type="percent" value="${porc}" /></p>
 
@@ -74,7 +97,7 @@
         
         <p><strong>Moeda europeia (EUR)</strong>
             <fmt:setLocale value="de_DE"/>
-            <fmt:formatNumber value="${balance}" type="currency"/></p>
+            <fmt:formatNumber value="${balance}" type="currency" currencyCode="EUR"/></p>
     </div>
 
     <hr>
@@ -83,8 +106,6 @@
         <h2>Formatacao de Datas e Horas</h2>
 
         <c:set var="now" value="<%=new java.util.Date()%>"/>
-
-
 
         <p><strong>Data original: </strong> <c:out value="${now}" /></p>
         <p><strong>Apenas hora:</strong> <fmt:formatDate type="time" value="${now}"/></p>
@@ -103,7 +124,7 @@
         <h2>Logica Condicional com Salarios</h2>
 
         <c:set var="salary" scope="session" value="${2000*2}" />
-        <c:set var="salarioMinimo" value="1412.00" />
+        <fmt:parseNumber var="salarioMinimo" value="1412.00" type="number" />
 
         <p><strong>Salario atual:</strong>
             <fmt:formatNumber value="${salary}" type="currency" /></p>
@@ -129,8 +150,17 @@
         </c:choose>
     </div>
     <hr>
+    <div>
+        <h2>Exemplo de integracao com JAVA</h2>
+       <form action="estudante-response.jsp" method="POST">
+            <p><strong>Nome: </strong><input type="text" name="nome" class="cor"/></p>
+            <p><strong>RGM:</strong><input type="text"name="rgm"/></p>
+            <p><input type="submit" value="Enviar!"/></p>
+       </form> 
+    </div>
+    <hr>
     <footer>
-        <p><em>Página gerada em: <fmt:formatDate type="both" dateStyle="full" timeStyle="full" value="${now}" /></em></p>
+        <p><em>Pagina gerada em: <fmt:formatDate type="both" dateStyle="full" timeStyle="full" value="${now}" /></em></p>
     </footer>
 </body>
 </html>
