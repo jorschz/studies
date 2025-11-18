@@ -18,8 +18,10 @@ python/think_python/book
 java/servers/
 #web Aplication (JSP)
 java/jsp/WEB-INF
+java/jsp/META-INF
 #Pastas
 java/jsp/materials
+
 
 
 #Sistema
