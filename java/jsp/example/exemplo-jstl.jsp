@@ -44,7 +44,7 @@
         <sql:setDataSource 
 	        var="snapshot" 
             driver="com.mysql.cj.jdbc.Driver"
-            url="jdbc:mysql://localhost:3306/agenda?useSSL=false&serverTimezone=UTC"
+            url="jdbc:mysql://localhost:3306/agenda?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true"
             user="jsp_user"
             password="jsp123"
         />  
