@@ -2,26 +2,18 @@
 
 ## Overview
 
-
-This repository contains practice projects and exercises that document my learning progress, organize my code, and showcase my practical skills.
+This repository contains practice projects and exercises that track my learning progress, organize my code, and showcase my practical skills.
 
 Each section focuses on a specific technology or topic, usually following university coursework or independent study.
 
 ## Highlights
 
-- **Java** 
-    - **Web Development**: CRUD applications using **JSP/Servlet**s, **JSTL**, **MVC**, **MySQL**, and **Tomcat**.  
 - **Python**
-    - **Fundamentals**: Exercises from *Think Python* focusing on algorithms, problem-solving, and coding best practices.  
+    - **Exercises** from *Think Python* focusing on algorithms, problem-solving, and coding best practices.
+    - **Challenges** from different online platforms to practice logical thinking.
 
-## Environment
-Projects are developed in a Linux environment (**WSL2**).
 
 ## Contents
-
-### Java
-
-#### Web Development
 
 ### Python
 
