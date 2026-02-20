@@ -10,19 +10,11 @@ __pycache__/
 *.py[cod]
 #Pastas
 python/think_python/book
-
-#Java
-#Dependencias
-*.jar
-#Aplication servers
-java/servers/
-#web Aplication (JSP)
-java/jsp/WEB-INF
-java/jsp/META-INF
-#Pastas
-java/jsp/materials
-
-
+python/pep
+#Arquivos
+debugging.md
+glossary.md
+summary.py
 
 #Sistema
 .DS_Store
