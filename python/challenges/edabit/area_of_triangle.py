@@ -7,3 +7,4 @@ for base, height in tests:
     print(
         f"The area of a triangle with base {base} and height {height} is: {int(area_of_a_triangle(base, height))}"
     )
+

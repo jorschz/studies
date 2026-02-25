@@ -52,3 +52,15 @@ for func, args, expected in tests:
     result = func(*args)
     assert result == expected, f"{func.__name__}{args} -> {result}, esperado {expected}"
 print("Todos os testes passaram.")
+
+# Numbers
+# Arithmetic
+# Multiplication
+# Division
+# Floor division
+# Modulo
+# Exponentiation
+# Conversions
+# Round
+# Priority and parentheses
+# Precision & Representation
