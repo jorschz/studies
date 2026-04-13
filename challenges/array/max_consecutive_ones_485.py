@@ -7,7 +7,9 @@ class Solution:
                 consecutive += 1
             else:
                 consecutive = 0
-            result = max(result, consecutive)
+            if consecutive >= result:
+                result = consecutive
+            # I could use: result = max(result, consecutive) in here
         return result
 
 
