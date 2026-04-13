@@ -5,11 +5,15 @@
 #Virtual environments
 .venv/
 venv/
+
 #Byte code cache
 __pycache__/
 *.py[cod]
+
 #Pastas
 think_python/book
+challenges/explicacoes
+
 #Arquivos
 debugging.md
 glossary.md
@@ -22,9 +26,6 @@ summary.py
 
 #Outros
 gitguide.md
-
-
-
 
 
 
